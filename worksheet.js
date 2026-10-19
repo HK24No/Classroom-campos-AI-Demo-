@@ -296,7 +296,7 @@ Tip: read the 🔊 directions aloud. Students can also answer by pointing or tel
   $("#wSave").addEventListener("click", e => {
     if (!WS) return;
     saveEntry({ type: "worksheet", grade: WS_INPUT.grade, title: `${WS.title} (${WS.versions.map(v => v.level).join(" / ")})`, md: wsMarkdown(), json: WS._raw, input: WS_INPUT });
-    e.target.textContent = "Saved ✓"; setTimeout(() => e.target.textContent = "Save to Portfolio Log", 1500);
+    e.target.textContent = "Saved ✓"; setTimeout(() => e.target.textContent = "Save to Teaching Journal", 1500);
   });
 
   function answerText(s, it) {

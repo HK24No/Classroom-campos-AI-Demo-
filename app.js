@@ -133,7 +133,7 @@
       const m = card._meta || {};
       if (act === "copyall") copyText(card._md, e.target);
       if (act === "download") download(`${m.type || "output"}-${(m.grade || "").replace(/\s+/g, "")}-${new Date().toISOString().slice(0, 10)}.md`, card._md);
-      if (act === "save") { saveEntry({ type: m.type, grade: m.grade, title: m.title, md: card._md, date: m.date }); e.target.textContent = "Saved ✓"; setTimeout(() => e.target.textContent = "Save to Portfolio Log", 1500); }
+      if (act === "save") { saveEntry({ type: m.type, grade: m.grade, title: m.title, md: card._md, date: m.date }); e.target.textContent = "Saved ✓"; setTimeout(() => e.target.textContent = "Save to Teaching Journal", 1500); }
     });
   });
 
@@ -311,7 +311,7 @@ ${g === "Grade 5" ? "" : "This is not 5th grade: do not mention digital book cov
     finally { btn.disabled = false; }
   });
 
-  // ================= 02 LESSON + PORTFOLIO =================
+  // ================= 02 LESSON + JOURNAL =================
   let lessonCtx = { topicIds: [], ca: [] }, lessonConv = null;
   function fillPlanSelect() {
     let html = `<option value="">— Pick a month / topic to pre-fill —</option>`;
@@ -372,7 +372,7 @@ Duration: 20 minutes, including setup and cleanup
 Evidence or observations from the last class: ${$("#lEvidence").value.trim() || "NOT YET COLLECTED"}`;
     const system = buildLessonSystem(buildAlignmentData(g, lessonCtx.topicIds, { ca: lessonCtx.ca }));
     const btn = $("#lGenerate"); btn.disabled = true;
-    setLoading(card, "Designing the lesson, post and portfolio record");
+    setLoading(card, "Designing the lesson, post and journal entry");
     $("#followCard").classList.add("hidden"); $("#fOutCard").classList.add("hidden");
     try {
       const md = await callAI(system, [{ role: "user", content: user }], 4000);
@@ -399,7 +399,7 @@ Evidence or observations from the last class: ${$("#lEvidence").value.trim() || 
     finally { btn.disabled = false; }
   });
 
-  // ================= 03 PORTFOLIO LOG =================
+  // ================= 03 TEACHING JOURNAL =================
   const LOG_KEY = "classroom-compass-portfolio-v1";
   let memLog = [];
   function loadLog() { try { const r = localStorage.getItem(LOG_KEY); return r ? JSON.parse(r) : memLog; } catch (e) { return memLog; } }
@@ -409,7 +409,7 @@ Evidence or observations from the last class: ${$("#lEvidence").value.trim() || 
   function renderLog() {
     const f = $("#logFilter").value;
     const list = loadLog().filter(e => !f || e.grade === f);
-    $("#logList").innerHTML = list.length ? "" : `<p class="log-empty">Nothing saved yet. Use “Save to Portfolio Log” on any output.</p>`;
+    $("#logList").innerHTML = list.length ? "" : `<p class="log-empty">Nothing saved yet. Use “Save to Teaching Journal” on any output.</p>`;
     list.forEach(e => {
       const d = document.createElement("details");
       d.className = "dd log";
@@ -429,9 +429,9 @@ Evidence or observations from the last class: ${$("#lEvidence").value.trim() || 
   $("#logFilter").addEventListener("change", renderLog);
   $("#logExportMd").addEventListener("click", () => {
     const list = loadLog(); if (!list.length) return;
-    download(`tech-time-portfolio-${new Date().toISOString().slice(0, 10)}.md`, "# Tech Time with Mrs. Hana — Portfolio Log\n\n" + list.map(e => `---\n\n**${KIND[e.type] || "Note"} · ${e.grade || ""} · ${e.title || ""}** (saved ${new Date(e.saved).toLocaleDateString()})\n\n${e.md}`).join("\n\n"));
+    download(`tech-time-teaching-journal-${new Date().toISOString().slice(0, 10)}.md`, "# Tech Time with Mrs. Hana — Teaching Journal\n\n" + list.map(e => `---\n\n**${KIND[e.type] || "Note"} · ${e.grade || ""} · ${e.title || ""}** (saved ${new Date(e.saved).toLocaleDateString()})\n\n${e.md}`).join("\n\n"));
   });
-  $("#logExportJson").addEventListener("click", () => download(`tech-time-portfolio-backup-${new Date().toISOString().slice(0, 10)}.json`, JSON.stringify(loadLog(), null, 2), "application/json"));
+  $("#logExportJson").addEventListener("click", () => download(`tech-time-teaching-journal-backup-${new Date().toISOString().slice(0, 10)}.json`, JSON.stringify(loadLog(), null, 2), "application/json"));
   $("#logImport").addEventListener("change", ev => {
     const file = ev.target.files[0]; if (!file) return;
     file.text().then(t => {

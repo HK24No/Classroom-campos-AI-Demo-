@@ -20,9 +20,9 @@
     <nav class="tabs" id="tabs">
       <div class="tab active" data-view="library"><span class="n">00</span>Curriculum Library</div>
       <div class="tab" data-view="recap"><span class="n">01</span>Learning Recap <small>to date</small></div>
-      <div class="tab" data-view="lesson"><span class="n">02</span>Lesson + Portfolio</div>
+      <div class="tab" data-view="lesson"><span class="n">02</span>Lesson + Journal</div>
       <div class="tab" data-view="worksheet"><span class="n">03</span>Worksheet Maker <small>print + Classroom</small></div>
-      <div class="tab" data-view="log"><span class="n">04</span>Portfolio Log <span class="count" id="logCount">0</span></div>
+      <div class="tab" data-view="log"><span class="n">04</span>Teaching Journal <span class="count" id="logCount">0</span></div>
     </nav>
 
     <div class="nav-group">Quick workflows</div>
@@ -98,17 +98,17 @@
       </div>
       <div class="card output-wrap" id="rOutCard">
         <div class="stamp">VERIFIED<br/>SOURCES ✓</div>
-        <div class="toolbar hidden"><button data-act="copyall">Copy all</button><button data-act="download">Download .md</button><button data-act="save">Save to Portfolio Log</button></div>
+        <div class="toolbar hidden"><button data-act="copyall">Copy all</button><button data-act="download">Download .md</button><button data-act="save">Save to Teaching Journal</button></div>
         <div class="output"><div class="empty-state">Your recap, review lesson, and documentation will appear here, each in its own dropdown.</div></div>
       </div>
     </section>
 
-    <!-- ===================== 02 LESSON + PORTFOLIO ===================== -->
+    <!-- ===================== 02 LESSON + JOURNAL ===================== -->
     <section class="view" id="view-lesson">
       <div class="worksheet-head">
-        <div class="eyebrow">02 · Lesson + Portfolio</div>
+        <div class="eyebrow">02 · Lesson + Journal</div>
         <h1>Plan the next 20 minutes &amp; record it</h1>
-        <p class="desc">Teacher plan, Classroom post, assessment &amp; portfolio record, then after-class questions that turn your observations into a recap and the next lesson.</p>
+        <p class="desc">Teacher plan, Classroom post, assessment &amp; journal entry, then after-class questions that turn your observations into a recap and the next lesson.</p>
       </div>
       <div class="card">
         <div class="field-row">
@@ -129,12 +129,12 @@
           <div class="field full"><label for="lEvidence">Evidence / observations from the last class</label><textarea id="lEvidence">NOT YET COLLECTED</textarea></div>
         </div>
         <div class="align-preview" id="lAlignPreview"></div>
-        <button class="generate-btn" id="lGenerate"><span>Generate lesson · post · portfolio record</span></button>
+        <button class="generate-btn" id="lGenerate"><span>Generate lesson · post · journal entry</span></button>
         <div class="hint">Planned lessons stay “planned” until you report what happened in the follow-up below.</div>
       </div>
       <div class="card output-wrap" id="lOutCard">
         <div class="stamp">VERIFIED<br/>SOURCES ✓</div>
-        <div class="toolbar hidden"><button data-act="copyall">Copy all</button><button data-act="download">Download .md</button><button data-act="save">Save plan to Portfolio Log</button></div>
+        <div class="toolbar hidden"><button data-act="copyall">Copy all</button><button data-act="download">Download .md</button><button data-act="save">Save plan to Teaching Journal</button></div>
         <div class="output"><div class="empty-state">Outputs A–D will appear here, each in its own dropdown.</div></div>
       </div>
 
@@ -147,7 +147,7 @@
       </div>
       <div class="card output-wrap hidden" id="fOutCard">
         <div class="stamp">RECORD<br/>COMPLETE ✓</div>
-        <div class="toolbar hidden"><button data-act="copyall">Copy all</button><button data-act="download">Download .md</button><button data-act="save">Save to Portfolio Log</button></div>
+        <div class="toolbar hidden"><button data-act="copyall">Copy all</button><button data-act="download">Download .md</button><button data-act="save">Save to Teaching Journal</button></div>
         <div class="output"></div>
       </div>
     </section>
@@ -245,7 +245,7 @@
           <button id="wPrint">🖨️ Print / Save as PDF</button>
           <button id="wDocx">📄 Google Doc for Classroom (.docx)</button>
           <button id="wKeyDocx">🔑 Answer key (.docx)</button>
-          <button id="wSave">Save to Portfolio Log</button>
+          <button id="wSave">Save to Teaching Journal</button>
         </div>
         <div id="wStatus"></div>
         <div class="ws-stage" id="wPreview"></div>
@@ -273,7 +273,7 @@
     <!-- ===================== 04 LOG ===================== -->
     <section class="view" id="view-log">
       <div class="worksheet-head">
-        <div class="eyebrow">04 · Portfolio Log</div>
+        <div class="eyebrow">04 · Teaching Journal</div>
         <h1>Your teaching &amp; evidence record</h1>
         <p class="desc">Everything you save is kept in this browser on this device. Export regularly to your Drive evidence folder.</p>
       </div>
@@ -302,7 +302,7 @@
       </div>
       <div class="card output-wrap" id="gOutCard">
         <div class="stamp">STANDARDS<br/>CHECKED ✓</div>
-        <div class="toolbar hidden"><button data-act="copyall">Copy text</button><button data-act="download">Download .md</button><button data-act="save">Save to Portfolio Log</button></div>
+        <div class="toolbar hidden"><button data-act="copyall">Copy text</button><button data-act="download">Download .md</button><button data-act="save">Save to Teaching Journal</button></div>
         <div class="output"><div class="empty-state">Your generated material will appear here.</div></div>
       </div>
     </section>
