@@ -1,6 +1,6 @@
 // curriculum.js — Tech Time with Mrs. Hana · verified alignment data + year plan
 // Source documents: K-2 and 3-5 Technology Lesson Plan 2025-2026 (Mrs. Hana), updated for 2026-27
-// (K-2 = iPads, 3-5 = Chromebooks, 20-minute classes).
+// (K-2 = iPads, 3-5 = Chromebooks, 30-minute classes).
 // Every code below was copied from the CDE "Computer Science Standards K–12 Progression" chart
 // (SBE adopted Sept 6, 2018). Every Common Sense title/URL was checked on commonsense.org in Oct 2026.
 // The app only lets the AI cite what is in this file; anything else must be labeled "needs verification".

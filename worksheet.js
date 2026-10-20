@@ -52,9 +52,9 @@
     };
   }
   const LEN = {
-    half: { "K-2": "4–5 items, about 5 minutes", "3-5": "5–6 items, about 5 minutes" },
-    one: { "K-2": "6–8 items, about 10 minutes", "3-5": "8–10 items, about 10 minutes" },
-    two: { "K-2": "9–10 items, about 15 minutes", "3-5": "12–14 items, about 15 minutes" }
+    half: { "K-2": "4–5 items, about 8 minutes", "3-5": "5–6 items, about 8 minutes" },
+    one: { "K-2": "6–8 items, about 12 minutes", "3-5": "8–10 items, about 12 minutes" },
+    two: { "K-2": "9–10 items, about 18 minutes", "3-5": "12–14 items, about 18 minutes" }
   };
   function userPrompt(s) {
     const band = bandOf(s.grade);
@@ -64,7 +64,7 @@ Session / topic: ${s.topic || "[not given]"}
 "I can" goal: ${s.goal || "[write one measurable goal that fits the topic]"}
 What was taught / key words: ${s.notes || "[not given — keep to core, grade-level ideas for this topic]"}
 Purpose: ${s.purpose}
-Length: ${LEN[s.length][band]} per version (part of a 20-minute class)
+Length: ${LEN[s.length][band]} per version (part of a 30-minute class)
 Question types to use: ${s.types.length ? s.types.join(", ") : "your best choice for the goal"}
 Supports: ${s.supports.length ? s.supports.join(", ") : "none requested"}
 Versions to create: ${s.versions.length ? s.versions.join(", ") : "On-level"}
@@ -251,7 +251,7 @@ Delivery: printed on paper AND posted on Google Classroom as a copy students fil
   function teacherMd() {
     const t = WS.teacher || {};
     const al = (t.alignment || []).map(a => `| ${a.type || ""} | ${a.id || ""} | ${a.how || ""} | ${a.link || ""} |`).join("\n");
-    return `**Grade:** ${WS_INPUT.grade} · **Topic:** ${WS_INPUT.topic} · **Time:** about ${WS.time_minutes || "10"} minutes\n\n**Objective:** ${t.objective || WS.i_can}\n\n**Prep:** ${t.prep || "Print or attach."}\n\n## Alignment\n| Type | Identifier / lesson | How this worksheet connects | Source |\n|---|---|---|---|\n${al || "| — | — | — | — |"}\n\n## Likely misconceptions\n${(t.misconceptions || []).map(m => `- **${m.misconception}** → ${m.fix}`).join("\n")}\n\n## Completed vs. understood\n${t.understanding_vs_completion || ""}\n\n## Versions\n${t.differentiation || WS.versions.map(v => v.level).join(", ")}`;
+    return `**Grade:** ${WS_INPUT.grade} · **Topic:** ${WS_INPUT.topic} · **Time:** about ${WS.time_minutes || "12"} minutes\n\n**Objective:** ${t.objective || WS.i_can}\n\n**Prep:** ${t.prep || "Print or attach."}\n\n## Alignment\n| Type | Identifier / lesson | How this worksheet connects | Source |\n|---|---|---|---|\n${al || "| — | — | — | — |"}\n\n## Likely misconceptions\n${(t.misconceptions || []).map(m => `- **${m.misconception}** → ${m.fix}`).join("\n")}\n\n## Completed vs. understood\n${t.understanding_vs_completion || ""}\n\n## Versions\n${t.differentiation || WS.versions.map(v => v.level).join(", ")}`;
   }
   function renderTeacher() { $("#wTeacher").innerHTML = mdToHtml(teacherMd()); }
   $("#wCopyNotes").addEventListener("click", e => { e.preventDefault(); e.stopPropagation(); copyText(teacherMd(), e.target); });

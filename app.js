@@ -167,7 +167,7 @@
           <div class="lbl">ISTE (supplemental)</div><div class="chips">${p.iste.map(isteChip).join("")}</div>
           ${p.cse.length ? `<div class="lbl">Common Sense lessons (curriculum resource)</div><div class="chips">${p.cse.map(cseChip).join("")}</div>` : ""}
           <div class="row-btns">
-            <button class="btn-sm primary" data-plan="${libBand}:${i}">Plan a 20-min lesson from this →</button>
+            <button class="btn-sm primary" data-plan="${libBand}:${i}">Plan a 30-min lesson from this →</button>
             <button class="btn-sm" data-ws="plan:${libBand}:${i}">Make a worksheet</button>
             ${p.topics.length ? `<button class="btn-sm" data-recap="${libBand}:${i}">Mark these topics in my recap</button>` : ""}
           </div>
@@ -292,7 +292,7 @@
     const user = `MY CLASSROOM
 School: Academy for Academic Excellence
 Grade: ${g}
-Class length: 20 minutes, including setup and cleanup
+Class length: 30 minutes, including setup and cleanup
 Devices: ${$("#rDevice").value}
 Audience: students and families through Google Classroom
 Document learning from the beginning of the 2026–27 school year through ${fmtDate($("#rThrough").value)}.
@@ -368,7 +368,7 @@ Current project and stage: ${$("#lProject").value.trim() || "[not provided]"}
 Previous learning: ${$("#lPrev").value.trim() || "[not provided]"}
 Devices and approved tools: ${$("#lTools").value.trim()}
 Student needs: ${$("#lNeeds").value.trim() || "[not provided — assume a typical mixed class incl. emerging readers and English learners]"}
-Duration: 20 minutes, including setup and cleanup
+Duration: 30 minutes, including setup and cleanup
 Evidence or observations from the last class: ${$("#lEvidence").value.trim() || "NOT YET COLLECTED"}`;
     const system = buildLessonSystem(buildAlignmentData(g, lessonCtx.topicIds, { ca: lessonCtx.ca }));
     const btn = $("#lGenerate"); btn.disabled = true;
@@ -453,7 +453,7 @@ Evidence or observations from the last class: ${$("#lEvidence").value.trim() || 
     const card = $("#gOutCard"), grade = $("#grade").value, topic = $("#topic").value.trim(), notes = $("#notes").value.trim();
     if (!topic) { $(".output", card).innerHTML = `<div class="empty-state">Please add a topic or focus before generating.</div>`; return; }
     const w = workflows[currentWorkflow];
-    const system = GENERIC_PREAMBLE + "\n\nAdditional context: this teacher's classes are 20 minutes; K-2 use iPads only, 3-5 use Chromebooks. Do not introduce student AI accounts for K-5.\n\n" + w.systemTask;
+    const system = GENERIC_PREAMBLE + "\n\nAdditional context: this teacher's classes are 30 minutes; K-2 use iPads only, 3-5 use Chromebooks. Do not introduce student AI accounts for K-5.\n\n" + w.systemTask;
     const user = `Grade: ${grade}\n${w.showDuration ? "Session length: " + $("#duration").value : ""}\nTopic/focus: ${topic}\n${notes ? "Additional context: " + notes : ""}`;
     const btn = $("#generateBtn"); btn.disabled = true;
     setLoading(card, "Drafting standards-aligned material");
